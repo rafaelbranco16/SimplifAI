@@ -1,0 +1,14 @@
+@startuml backend_DM
+
+class ClinicalDiary {
+}
+class DischargeNote {
+}
+class MedicalConsultationText {
+    - text
+}
+
+MedicalConsultationText "1..*" -- "1" ClinicalDiary : generates >
+ClinicalDiary "1.*" -- "1" DischargeNote : generates >
+
+@enduml
