@@ -2,13 +2,59 @@
 
 class ClinicalDiary {
 }
+'DischargeNote
 class DischargeNote {
+    - hospitalizationReason
+    - therapeuticProposal
 }
+
+class HospotalizationProblems {
+    - admitionHistory
+    - MCDT
+    - evolution
+    - finalState
+}
+
+
+'Entry Note
+class EntryNote {
+    - allergies
+}
+
+class Identification {
+    - gender
+    - age
+    - cognitiveStatus
+    - functionStatus
+}
+
+class PersonalBackground {
+    - medicalBackground
+    - cirurgicBackground
+}
+
+class UsualMedication {
+    - medication
+    - dose
+}
+
+
 class MedicalConsultationText {
     - text
 }
 
+
 MedicalConsultationText "1..*" -- "1" ClinicalDiary : generates >
 ClinicalDiary "1.*" -- "1" DischargeNote : generates >
+
+'Discharge Note
+DischargeNote "1" - "1" EntryNote : has >
+EntryNote "1" -- "1" Identification : has >
+PersonalBackground "1" -- "1" EntryNote : has <
+EntryNote "1" -- "1..*" UsualMedication : medication >
+DischargeNote "1" -- "1" HospotalizationProblems : has > 
+
+'ClinicalDiary
+ClinicalDiary "1" -- "1" EntryNote : has > 
 
 @enduml
