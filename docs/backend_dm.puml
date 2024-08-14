@@ -8,7 +8,7 @@ class DischargeNote {
     - therapeuticProposal
 }
 
-class HospotalizationProblems {
+class HospitalizationProblems {
     - admitionHistory
     - MCDT
     - evolution
