@@ -1,5 +1,6 @@
 from src.loaders import loader
 from src.services.document_service import DocumentService
+
 from src import config
 
 class DocumentController:
