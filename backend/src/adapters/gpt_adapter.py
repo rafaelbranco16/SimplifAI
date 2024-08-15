@@ -1,4 +1,8 @@
 from src.adapters.llm_adapter import LLMAdapter
+from langchain_openai import ChatOpenAI
+from dotenv import load_dotenv
+import os
+from src import config
 
 class GPTAdapter(LLMAdapter):
     '''
@@ -15,9 +19,10 @@ class GPTAdapter(LLMAdapter):
         self.define_model()
     
     def define_model(self):
-        self.model = any
+        load_dotenv()
+        self.model:ChatOpenAI = ChatOpenAI(model=config.gpt_model, api_key=os.getenv('GPT_API_KEY'))
     '''
     Sends the prompt to the OpenAI module
     '''
-    async def send_prompt(self):
-        return {"message":"This message is from the GPT Adapter"}
+    async def send_prompt(self, prompt:str):
+        return self.model.invoke(prompt)
