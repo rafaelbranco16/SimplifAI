@@ -1,13 +1,14 @@
 from src.adapters.llm_adapter import LLMAdapter
-from langchain.prompts import ChatPromptTemplate
 from langchain.schema import StrOutputParser
+from langchain.prompts import ChatPromptTemplate
 from langfuse.decorators import observe
-from langchain_openai import ChatOpenAI
+from langchain_groq import ChatGroq
 from dotenv import load_dotenv
 import os
 from src import config
 
-class GPTAdapter(LLMAdapter):
+
+class GroqAdapter(LLMAdapter):
     '''
     The GPT Adapter works over the LangChain
     and uses it to send a prompt
@@ -26,7 +27,7 @@ class GPTAdapter(LLMAdapter):
     '''
     def define_model(self):
         load_dotenv()
-        self.model:ChatOpenAI = ChatOpenAI(model=config.gpt_model, api_key=os.getenv('GPT_API_KEY'))
+        self.model:ChatGroq = ChatGroq(model=config.groq_model, api_key=os.getenv('GROQ_API_KEY'))
     '''
     This is a temporary function just to test the API key
 
