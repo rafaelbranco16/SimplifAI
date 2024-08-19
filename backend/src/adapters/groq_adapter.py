@@ -35,7 +35,13 @@ class GroqAdapter(LLMAdapter):
     '''
     @observe()
     async def send_prompt(self, prompt:str):
-        prompt1 = ChatPromptTemplate.from_template(prompt)
+        assist_text = '''You are a medical reviewer and I want you to return a text of this exact type:
+    # Doenca: Nome da doenca
+    ## Sintoma 1
+    ## Sintoma 2
+    Retorna somente isto sem nenhuma explicação
+        '''
+        prompt1 = ChatPromptTemplate.from_template(assist_text + prompt)
         chain = prompt1 | self.model | StrOutputParser()
         handler = config.langfuse_handler
         print(handler)

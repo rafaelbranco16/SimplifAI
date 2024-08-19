@@ -52,7 +52,7 @@ DischargeNote "1" - "1" EntryNote : has >
 EntryNote "1" -- "1" Identification : has >
 PersonalBackground "1" -- "1" EntryNote : has <
 EntryNote "1" -- "1..*" UsualMedication : medication >
-DischargeNote "1" -- "1" HospotalizationProblems : has > 
+DischargeNote "1" -- "1" HospitalizationProblems : has > 
 
 'ClinicalDiary
 ClinicalDiary "1" -- "1" EntryNote : has > 

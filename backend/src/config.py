@@ -26,7 +26,7 @@ adapters = {
     }
 }
 
-gpt_model = "gpt-4o"
+gpt_model = "gpt-3.5-turbo"
 groq_model = "llama-3.1-70b-versatile"
 
 langfuse_host="https://cloud.langfuse.com"
