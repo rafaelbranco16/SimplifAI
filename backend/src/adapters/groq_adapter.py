@@ -46,3 +46,9 @@ class GroqAdapter(LLMAdapter):
         handler = config.langfuse_handler
         print(handler)
         return chain.invoke({},config={"callbacks":[config.langfuse_handler]})
+    '''
+    Sends a list of messages defined elsewhere
+    '''
+    async def send_messages(self, messages:ChatPromptTemplate):
+        chain = messages | self.model | StrOutputParser()
+        return chain.invoke({},config={"callbacks":[config.langfuse_handler]})

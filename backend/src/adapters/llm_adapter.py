@@ -1,3 +1,4 @@
+from langchain_core.prompts import ChatPromptTemplate
 '''
 ChatGPT cooked this
 '''
@@ -12,4 +13,7 @@ class LLMAdapter:
     Temporary function to test the different adapters
     '''
     async def send_prompt(self, prompt:str):
+        raise NotImplementedError("This feature has not been implemented yet!")
+    
+    async def send_messages(self, messages:ChatPromptTemplate):
         raise NotImplementedError("This feature has not been implemented yet!")
