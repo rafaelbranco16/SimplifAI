@@ -3,27 +3,39 @@ from langfuse.callback import CallbackHandler
 from dotenv import load_dotenv
 
 load_dotenv()
-controllers = {
-    "document_controller": "DocumentController",
-    "llm_controller":{
-        "name":"LLMController",
-        "path":"src.controllers.llm_controller"
-    }
+
+llm_controller = {
+    "name":"LLMController",
+    "path":"src.controllers.llm_controller"
+}
+medical_controller = {
+    "name":"MedicalController",
+    "path":"src.controllers.medical_controller"
 }
 
-services = {
-    "document_service":"DocumentService",
-    "llm_service": {
-        "name":"LLMService",
-        "path":"src.services.llm_service"
-    }
+document_controller = {
+    "name":"DocumentController",
+    "path":"src.controllers.document_controller"
 }
 
-adapters = {
-    "llm_adapter": {
-        "name":"GroqAdapter",
-        "path":"src.adapters.groq_adapter"
-    }
+document_service = {
+    "name":"DocumentService",
+    "path":"src.services.document_service"
+}
+
+llm_service = {
+    "name":"LLMService",
+    "path":"src.services.llm_service"
+}
+
+medical_service = {
+    "name":"MedicalService",
+    "path":"src.services.medical_service"
+}
+
+llm_adapter = {
+    "name":"GroqAdapter",
+    "path":"src.adapters.groq_adapter"
 }
 
 gpt_model = "gpt-3.5-turbo"
