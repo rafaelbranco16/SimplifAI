@@ -6,6 +6,8 @@ from langchain_groq import ChatGroq
 from dotenv import load_dotenv
 import os
 from src import config
+from src.loaders import load_database
+from src.logger import Logger
 
 
 class GroqAdapter(LLMAdapter):

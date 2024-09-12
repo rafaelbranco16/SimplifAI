@@ -1,7 +1,7 @@
 from typing import List
 
 class HospitalizationProblems:
-    def __init__(self, admission_history: List[str], mcdt: str, evolution: str, final_state: str):
+    def __init__(self, admission_history: list[str], mcdt: str, evolution: str, final_state: str):
         self.admission_history = admission_history  # List of admission history entries
         self.mcdt = mcdt  # Medical, Clinical, Diagnostic Tests
         self.evolution = evolution  # Progress or course of the illness
