@@ -12,3 +12,6 @@ class EntryNoteAdapter:
         entry_note_dict = entry_note.to_dict()
         self.db["EntryNote"].insert_one(entry_note_dict)
         return entry_note
+    
+    async def find_by_id(self, id) -> dict:
+        return self.db["EntryNote"].find_one({"id":id})

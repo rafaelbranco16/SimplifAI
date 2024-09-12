@@ -55,6 +55,11 @@ entry_note_adapter = {
     "path":"src.adapters.entry_note_adapter"
 }
 
+clinical_diary_adapter = {
+    "name":"ClinicalDiaryAdapter",
+    "path":"src.adapters.clinical_diary_adapter"
+}
+
 gpt_model = "gpt-3.5-turbo"
 groq_model = "llama-3.1-70b-versatile"
 

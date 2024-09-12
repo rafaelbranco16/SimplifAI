@@ -12,5 +12,5 @@ class LLMService :
         return await self.llm_adapter.send_prompt(request_dto.prompt)
     
     async def send_messages(self, messages:ChatPromptTemplate):
-        return await self.llm_adapter.send
+        return await self.llm_adapter.send_messages(messages)
         

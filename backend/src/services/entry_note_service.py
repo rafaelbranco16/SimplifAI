@@ -7,6 +7,7 @@ from src.domain.identification import Identification
 from src.logger import Logger
 from src.loaders import loader
 from src import config
+from src.mappers.entry_note_mapper import EntryNoteMapper
 
 class EntryNoteService:
     def __init__(self) -> None:
@@ -44,4 +45,8 @@ class EntryNoteService:
         saved_entry_note = await self.entry_note_adapter.save_entry_note(entry_note)
 
         return {"message":saved_entry_note}
+    
+    async def find_entry_note_by_id(self, id:str):
+        result:dict = await self.entry_note_adapter.find_by_id(id)
+        return EntryNoteMapper.to_obj(result)
         

@@ -14,4 +14,6 @@ List with the symptoms
 
 I want a list with all the illness objects present on the text. You cannot return anything outside
 what is asked. Always return in the language the text was given.
+
+This is the info you have before the consultation about the patient:
 '''

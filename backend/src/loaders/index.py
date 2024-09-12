@@ -16,5 +16,6 @@ services = [
 
 adapters = [
     config.llm_adapter,
-    config.entry_note_adapter
+    config.entry_note_adapter,
+    config.clinical_diary_adapter
 ]

@@ -19,7 +19,7 @@ class Identification:
     A default string for this class
     '''
     def __str__(self):
-        return (f"Identification(Gender: {self.gender}, Age: {self.age}, "
+        return (f"Name: {self.name}, Gender: {self.gender}, Age: {self.age}, "
                 f"Cognitive Status: {self.cognitive_status}, Function Status: {self.function_status})")
     
     def to_dict(self):
