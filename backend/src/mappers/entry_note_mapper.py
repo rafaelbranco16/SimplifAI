@@ -11,7 +11,6 @@ class EntryNoteMapper:
 
     @staticmethod
     def to_obj(entry_note_dict: dict) -> EntryNote:
-        """Converts a dictionary to an EntryNote object."""
         identification = Identification(
             name=entry_note_dict['identification']['name'],
             gender=entry_note_dict['identification']['gender'],
@@ -20,7 +19,6 @@ class EntryNoteMapper:
             function_status=entry_note_dict['identification']['function_status']
         )
 
-        # Convert each medication dictionary to a UsualMedication object
         usual_medication = [
             UsualMedication(
                 medication=med['medication'],
@@ -33,9 +31,8 @@ class EntryNoteMapper:
             cirurgic_background=entry_note_dict['personal_background']['cirurgic_background']
         )
 
-        # Create and return an EntryNote object
         return EntryNote(
-            id=entry_note_dict.get('id'),  # Use .get() to handle missing id gracefully
+            id=entry_note_dict.get('id'),
             identification=identification,
             allergies=entry_note_dict['allergies'],
             usual_medication=usual_medication,

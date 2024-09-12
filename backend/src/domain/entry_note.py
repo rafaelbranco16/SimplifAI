@@ -11,7 +11,7 @@ class EntryNote:
                  usual_medication:list[UsualMedication], 
                  personal_background:PersonalBackground
     ):
-        if id is not None:
+        if id is None:
             self.id = uuid.uuid4()
             self.allergies = allergies
             self.identification = identification
@@ -23,7 +23,9 @@ class EntryNote:
             self.identification = identification
             self.usual_medication = usual_medication
             self.personal_background = personal_background
-
+    '''
+    Converts this object into a dict
+    '''
     def to_dict(self):
         return {
             "id":str(self.id),

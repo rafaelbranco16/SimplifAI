@@ -49,7 +49,7 @@ class GroqAdapter(LLMAdapter):
         print(handler)
         return chain.invoke({},config={"callbacks":[config.langfuse_handler]})
     '''
-    Sends a list of messages defined elsewhere
+    Sends a list of messages defined elsewhere to the AI
     '''
     async def send_messages(self, messages:ChatPromptTemplate):
         chain = messages | self.model | StrOutputParser()

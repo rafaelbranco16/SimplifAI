@@ -36,17 +36,22 @@ class EntryNoteService:
         )
 
         entry_note:EntryNote = EntryNote(
-            identification, 
-            entry_note_dto["allergies"], 
-            usual_medication_list, 
+            None,
+            identification,
+            entry_note_dto["allergies"],
+            usual_medication_list,
             personal_background
         )
-        entry_note.identification
-        saved_entry_note = await self.entry_note_adapter.save_entry_note(entry_note)
-
-        return {"message":saved_entry_note}
+        return await self.entry_note_adapter.save_entry_note(entry_note)
     
+    '''
+    Searches for a entry note by its id
+    @param id - The id of the entry note
+    '''
     async def find_entry_note_by_id(self, id:str):
         result:dict = await self.entry_note_adapter.find_by_id(id)
+        if result is None:
+            Logger.print_warning(f"The entry note with the id {id} does NOT exist.")
+            raise ModuleNotFoundError("This entry note does not exist.")
         return EntryNoteMapper.to_obj(result)
         

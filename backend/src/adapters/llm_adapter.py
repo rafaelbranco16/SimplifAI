@@ -15,5 +15,8 @@ class LLMAdapter:
     async def send_prompt(self, prompt:str):
         raise NotImplementedError("This feature has not been implemented yet!")
     
+    '''
+    Sends a list of messages defined elsewhere to the AI
+    '''
     async def send_messages(self, messages:ChatPromptTemplate):
         raise NotImplementedError("This feature has not been implemented yet!")
