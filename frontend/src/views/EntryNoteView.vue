@@ -34,7 +34,8 @@
       <section class="dynamic-fields">
         <h2>Allergies</h2>
         <div v-for="(allergy, index) in formData.allergies" :key="index" class="form-group">
-          <input type="text" :value="allergy" @input="updateAllergy(index, $event.target.value)" placeholder="Enter allergy" />
+          <!-- Use v-model for two-way binding to ensure the input stays in sync with the data -->
+          <input type="text" v-model="formData.allergies[index]" placeholder="Enter allergy" />
           <button @click="removeAllergy(index)">Remove</button>
         </div>
         <button @click="addAllergy">Add Allergy</button>
@@ -51,8 +52,9 @@
       <section class="dynamic-fields">
         <h2>Medications</h2>
         <div v-for="(medication, index) in formData.medications" :key="index" class="form-group">
-          <input type="text" :value="medication.name" @input="updateMedication(index, 'name', $event.target.value)" placeholder="Medication" />
-          <input type="text" :value="medication.dose" @input="updateMedication(index, 'dose', $event.target.value)" placeholder="Dose" />
+          <!-- Use v-model for two-way binding to ensure data stays in sync with formData.medications -->
+          <input type="text" v-model="medication.name" placeholder="Medication" />
+          <input type="text" v-model="medication.dose" placeholder="Dose" />
           <button @click="removeMedication(index)">Remove</button>
         </div>
         <button @click="addMedication">Add Medication</button>
@@ -98,10 +100,52 @@
       updateMedication(index, field, value) {
         this.$set(this.formData.medications[index], field, value);
       },
-      submitForm() {
-        // Handle form submission here
-        console.log(this.formData);
-        alert('Form submitted successfully!');
+      async submitForm() {
+        // Create the JSON object with the desired structure
+        const submissionData = {
+          allergies: this.formData.allergies.length > 0 ? this.formData.allergies : ["No allergies"],
+          identification: {
+            name: this.formData.name,
+            gender: this.formData.gender,
+            age: this.formData.age,
+            cognitive_status: this.formData.cognitiveStatus,
+            functional_status: this.formData.functionalStatus
+          },
+          usual_medication: this.formData.medications.map(medication => ({
+            medication: medication.name,
+            dose: medication.dose
+          })),
+          personal_background: {
+            medical_background: this.formData.medicalBackground,
+            cirurgic_background: this.formData.surgicalBackground
+          }
+        };
+
+        try {
+          // Perform the POST request using fetch
+          const response = await fetch('http://localhost:8000/entry-note', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(submissionData)  // Send the JSON data
+          });
+
+          // Check if the response was successful
+          if (!response.ok) {
+            throw new Error(`HTTP error! status: ${response.status}`);
+          }
+
+          // Parse the JSON response (if any)
+          const result = await response.json();
+          console.log('Form submitted successfully:', result);
+          alert('Form submitted successfully!');
+
+        } catch (error) {
+          // Handle errors (network errors, invalid response, etc.)
+          console.error('There was a problem with the submission:', error);
+          alert('Failed to submit the form.');
+        }
       }
     }
   };
