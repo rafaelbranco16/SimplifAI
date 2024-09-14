@@ -1,14 +1,14 @@
-from fastapi import APIRouter
+from fastapi import APIRouter,FastAPI, UploadFile, File, Body
 from src.loaders.loader import loader
 from src.controllers.document_controller import DocumentController
 from src.controllers.llm_controller import LLMController
 from src.controllers.entry_note_controller import EntryNoteController
 from src.controllers.medical_controller import MedicalController
+from src.controllers.audio_controller import AudioController
 from src import config
 from src.dto.request_dto import RequestDto
 from src.dto.entry_note_dto import EntryNoteDto
 from src.logger import Logger
-from fastapi import Body
 
 router = APIRouter()
 
@@ -33,3 +33,11 @@ class Router:
     async def create_clinical_diary(id: str = Body(...), mct: str = Body(...)):
         ctrl: MedicalController = loader.resolve(config.medical_controller["name"])
         return await ctrl.create_clinical_diary(id, mct)
+    
+    @router.post("/upload-audio/")
+    async def generate_text_from_audio(file: UploadFile = File(...)):
+        ctrl: AudioController = loader.resolve(config.audio_controller["name"])
+        transcription = await ctrl.generate_text_from_audio(file)
+        return {"transcription": transcription}
+
+            

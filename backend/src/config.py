@@ -25,6 +25,11 @@ entry_note_controller = {
     "path":"src.controllers.entry_note_controller"
 }
 
+audio_controller = {
+    "name":"AudioController",
+    "path":"src.controllers.audio_controller"
+}
+
 document_service = {
     "name":"DocumentService",
     "path":"src.services.document_service"
@@ -45,6 +50,11 @@ entry_note_service = {
     "path":"src.services.entry_note_service"
 }
 
+audio_service = {
+    "name":"AudioService",
+    "path":"src.services.audio_service"
+}
+
 llm_adapter = {
     "name":"GroqAdapter",
     "path":"src.adapters.groq_adapter"
@@ -59,6 +69,12 @@ clinical_diary_adapter = {
     "name":"ClinicalDiaryAdapter",
     "path":"src.adapters.clinical_diary_adapter"
 }
+
+audio_adapter = {
+    "name":"WhisperAdapter",
+    "path":"src.adapters.whisper_adapter"
+}
+
 
 gpt_model = "gpt-3.5-turbo"
 groq_model = "llama-3.1-70b-versatile"
