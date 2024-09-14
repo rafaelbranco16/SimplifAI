@@ -22,7 +22,8 @@ class EntryNoteService:
             entry_note_dto["identification"]["gender"],
             entry_note_dto["identification"]["age"],
             entry_note_dto["identification"]["cognitive_status"],
-            entry_note_dto["identification"]["functional_status"]
+            entry_note_dto["identification"]["functional_status"],
+            entry_note_dto["identification"]["nif"]
         )
 
         usual_medication_list:list[UsualMedication] = []

@@ -7,12 +7,13 @@ class Identification:
     @param cognitive_status - The congitive status of the patient
     @param function_status- The functional status of the patient
     '''
-    def __init__(self, name:str, gender: str, age: int, cognitive_status: str, function_status: str):
+    def __init__(self, name:str, gender: str, age: int, cognitive_status: str, function_status: str, nif:str):
         self.name = name
         self.gender = gender
         self.age = age
         self.cognitive_status = cognitive_status
         self.function_status = function_status
+        self.nif = nif
         Logger.print_info(f"Created a new identification with the name: {self.name}")
 
     '''
@@ -28,6 +29,7 @@ class Identification:
             "gender": self.gender,
             "age": self.age,
             "cognitive_status": self.cognitive_status,
-            "function_status": self.function_status
+            "function_status": self.function_status,
+            "nif":self.nif
         }
 

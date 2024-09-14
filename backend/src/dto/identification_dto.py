@@ -6,3 +6,4 @@ class IdentificationDto(TypedDict):
     age:int
     cognitive_status:str
     functional_status:str
+    nif:str
