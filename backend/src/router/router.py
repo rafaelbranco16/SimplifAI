@@ -39,5 +39,10 @@ class Router:
         ctrl: AudioController = loader.resolve(config.audio_controller["name"])
         transcription = await ctrl.generate_text_from_audio(file)
         return {"transcription": transcription}
+    
+    @router.get("/entry-note/{nif}")
+    async def generate_text_from_audio(nif:str):
+        entry_note_controller:EntryNoteController = loader.resolve(config.entry_note_controller["name"])
+        return await entry_note_controller.get_entry_note(nif)
 
             

@@ -23,3 +23,9 @@ class EntryNoteAdapter:
     '''
     async def find_by_id(self, id) -> dict:
         return self.db["EntryNote"].find_one({"id":id})
+    
+    '''
+    Finds an entry note by its nif
+    '''
+    async def find_by_nif(self, nif:str) -> dict:
+        return self.db["EntryNote"].find_one({"identification.nif":nif})

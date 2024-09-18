@@ -25,3 +25,14 @@ class EntryNoteController:
                 status_code=400,
                 content={"message":"Something went wrong. Try again."}
             )
+        
+    async def get_entry_note(self, nif:str):
+        try:
+            return {"message": await self.service.find_entry_note_by_nif(nif)}
+        except Exception as e:
+            error_message = traceback.format_exc()
+            Logger.print_error(f"The following error occured: {str(e)}\n{error_message}")
+            return JSONResponse(
+                status_code=400,
+                content={"message":"Something went wrong. Try again."}
+            )

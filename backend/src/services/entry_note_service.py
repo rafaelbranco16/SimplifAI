@@ -55,4 +55,10 @@ class EntryNoteService:
             Logger.print_warning(f"The entry note with the id {id} does NOT exist.")
             raise ModuleNotFoundError("This entry note does not exist.")
         return EntryNoteMapper.to_obj(result)
-        
+    
+    async def find_entry_note_by_nif(self, nif:str):
+        result:dict = await self.entry_note_adapter.find_by_nif(nif)
+        if result is None:
+            Logger.print_warning(f"The entry note with the id {id} does NOT exist.")
+            raise ModuleNotFoundError("This entry note does not exist.")
+        return EntryNoteMapper.to_obj(result)
