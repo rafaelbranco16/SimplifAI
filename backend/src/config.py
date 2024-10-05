@@ -30,6 +30,11 @@ audio_controller = {
     "path":"src.controllers.audio_controller"
 }
 
+discharge_note_controller = {
+    "name":"DischargeNoteController",
+    "path":"src.controllers.discharge_note_controller"
+}
+
 document_service = {
     "name":"DocumentService",
     "path":"src.services.document_service"
@@ -55,6 +60,11 @@ audio_service = {
     "path":"src.services.audio_service"
 }
 
+discharge_note_service = {
+    "name":"DischargeNoteService",
+    "path":"src.services.discharge_note_service"
+}
+
 llm_adapter = {
     "name":"GroqAdapter",
     "path":"src.adapters.groq_adapter"
@@ -73,6 +83,11 @@ clinical_diary_adapter = {
 audio_adapter = {
     "name":"WhisperAdapter",
     "path":"src.adapters.whisper_adapter"
+}
+
+discharge_note_adapter = {
+    "name":"DischargeNoteAdapter",
+    "path":"src.adapters.discharge_note_adapter"
 }
 
 

@@ -8,6 +8,7 @@ from langchain_core.prompts import ChatPromptTemplate
 from src import config
 from src.domain.clinical_diary import ClinicalDiary
 from src.adapters.clinical_diary_adapter import ClinicalDiaryAdapter
+from src.mappers.medical_mapper import MedicalNoteMapper
 from src.logger import Logger
 
 class MedicalService:
@@ -38,3 +39,10 @@ class MedicalService:
     
     async def save_clinical_diary(self, clinical_diary:ClinicalDiary):
         return await self.clinical_diary_adapter.save_clinical_diary(clinical_diary)
+    
+    async def find_clinical_diary_by_nif(self,nif:str):
+        result:dict = await self.clinical_diary_adapter.find_by_nif(nif)
+        if result is None:
+            Logger.print_warning(f"No clicial diaries found for this patient")
+            raise ModuleNotFoundError("No clicial diaries found for this patient")
+        return MedicalNoteMapper.to_obj(result)

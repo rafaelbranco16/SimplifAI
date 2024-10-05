@@ -5,6 +5,7 @@ from src.controllers.llm_controller import LLMController
 from src.controllers.entry_note_controller import EntryNoteController
 from src.controllers.medical_controller import MedicalController
 from src.controllers.audio_controller import AudioController
+from src.controllers.discharge_note_controller import DischargeNoteController
 from src import config
 from src.dto.request_dto import RequestDto
 from src.dto.entry_note_dto import EntryNoteDto
@@ -44,5 +45,11 @@ class Router:
     async def generate_text_from_audio(nif:str):
         entry_note_controller:EntryNoteController = loader.resolve(config.entry_note_controller["name"])
         return await entry_note_controller.get_entry_note(nif)
+    
+    @router.post("/discharge-note/{nif}")
+    async def create_discharge_note(nif:str):
+        discharge_note_controller:DischargeNoteController = loader.resolve(config.discharge_note_controller["name"])
+        return await discharge_note_controller.create_discharge_note(nif)
+    
 
             

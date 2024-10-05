@@ -38,3 +38,27 @@ Instructions:
     Ensure that the summary is concise but contains all relevant details from the text.
     Highlight any changes in the patient's condition or treatment between subsequent reports if multiple consultations are provided.
 '''
+
+
+discharge_note_prompt='''
+You are tasked with creating a medical discharge note. Below is the patient's entry note and clinical diaries during their hospital stay. Using this information, generate a discharge note that follows the format provided.
+
+Entry Note:
+[Insert the entry note exactly as you did above]
+
+Clinical Diaries:
+[Insert all the clinical diaries as you did above]
+
+Discharge Note:
+Create a discharge note that includes:
+
+Patient Details: Include patient’s basic information (age, autonomy, cognitive status).
+Personal History: List relevant medical history and regular medications.
+Hospitalization Summary:
+The main problem or diagnosis addressed during hospitalization.
+Details of the treatment provided, including surgery or major interventions.
+Clinical progression, mentioning the improvement or worsening of symptoms.
+Summary of analytical or diagnostic tests performed and their results.
+Outcome: Clearly mention the current condition of the patient, treatment continuation (if any), and instructions for post-discharge care.
+Medication on Discharge: List any medications the patient will continue taking after discharge.
+Ensure the note is written in the same language and follows the style of medical discharge notes.'''
