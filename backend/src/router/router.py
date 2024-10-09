@@ -46,10 +46,14 @@ class Router:
         entry_note_controller:EntryNoteController = loader.resolve(config.entry_note_controller["name"])
         return await entry_note_controller.get_entry_note(nif)
     
-    @router.post("/discharge-note/{nif}")
-    async def create_discharge_note(nif:str):
-        discharge_note_controller:DischargeNoteController = loader.resolve(config.discharge_note_controller["name"])
-        return await discharge_note_controller.create_discharge_note(nif)
     
+    @router.post("/discharge-note")
+    async def create_discharge_note(data: dict = Body(...)):
+        nif = data.get("nif")
+        if nif is None:
+            return {"message": "NIF not provided"}, 400
+        
+        discharge_note_controller: DischargeNoteController = loader.resolve(config.discharge_note_controller["name"])
+        return await discharge_note_controller.create_discharge_note(nif)
 
             

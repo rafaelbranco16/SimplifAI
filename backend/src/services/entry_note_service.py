@@ -62,3 +62,44 @@ class EntryNoteService:
             Logger.print_warning(f"The entry note with the id {id} does NOT exist.")
             raise ModuleNotFoundError("This entry note does not exist.")
         return EntryNoteMapper.to_obj(result)
+
+
+    def format_entry_note(self, entry_note: EntryNote) -> str:
+        # Format identification
+        identification = entry_note.identification
+        formatted_identification = (
+            f"Name: {identification.name}\n"
+            f"Gender: {identification.gender}\n"
+            f"Age: {identification.age}\n"
+            f"Cognitive Status: {identification.cognitive_status}\n"
+            f"Functional Status: {identification.functional_status}\n"
+            f"NIF: {identification.nif}\n"
+        )
+
+        # Format allergies
+        formatted_allergies = f"Allergies: {', '.join(entry_note.allergies) if entry_note.allergies else 'None'}\n"
+
+        # Format usual medications
+        formatted_medications = "Usual Medications:\n"
+        if entry_note.usual_medications:
+            for medication in entry_note.usual_medications:
+                formatted_medications += f"- Medication: {medication.medication}, Dose: {medication.dose}\n"
+        else:
+            formatted_medications += "None\n"
+
+        # Format personal background
+        personal_background = entry_note.personal_background
+        formatted_background = (
+            f"Medical Background: {personal_background.medical_background}\n"
+            f"Surgical Background: {personal_background.surgical_background}\n"
+        )
+
+        # Combine everything into the final string
+        formatted_entry_note = (
+            f"Identification:\n{formatted_identification}\n"
+            f"{formatted_allergies}\n"
+            f"{formatted_medications}\n"
+            f"Personal Background:\n{formatted_background}"
+        )
+
+        return formatted_entry_note

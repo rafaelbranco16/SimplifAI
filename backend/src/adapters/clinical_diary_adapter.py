@@ -29,4 +29,5 @@ class ClinicalDiaryAdapter:
         return self.db["ClinicalDiary"].find_one({"id":id})
     
     async def find_by_nif(self, nif: str)->dict:
-        return self.db["ClinicalDiary"].find_one({"identification.nif":nif})
+        Logger.print_info(f"Type of collection: {type(self.db['ClinicalDiary'])}")
+        return self.db["ClinicalDiary"].find_one({"entry_note.identification.nif":nif})
