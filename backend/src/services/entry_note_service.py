@@ -81,8 +81,8 @@ class EntryNoteService:
 
         # Format usual medications
         formatted_medications = "Usual Medications:\n"
-        if entry_note.usual_medications:
-            for medication in entry_note.usual_medications:
+        if entry_note.usual_medication:
+            for medication in entry_note.usual_medication:
                 formatted_medications += f"- Medication: {medication.medication}, Dose: {medication.dose}\n"
         else:
             formatted_medications += "None\n"
@@ -91,7 +91,7 @@ class EntryNoteService:
         personal_background = entry_note.personal_background
         formatted_background = (
             f"Medical Background: {personal_background.medical_background}\n"
-            f"Surgical Background: {personal_background.surgical_background}\n"
+            f"Surgical Background: {personal_background.cirurgic_background}\n"
         )
 
         # Combine everything into the final string

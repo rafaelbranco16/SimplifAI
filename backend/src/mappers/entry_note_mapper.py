@@ -16,7 +16,7 @@ class EntryNoteMapper:
             gender=entry_note_dict['identification']['gender'],
             age=entry_note_dict['identification']['age'],
             cognitive_status=entry_note_dict['identification']['cognitive_status'],
-            function_status=entry_note_dict['identification']['function_status'],
+            functional_status=entry_note_dict['identification']['functional_status'],
             nif=entry_note_dict['identification']['nif']
         )
 

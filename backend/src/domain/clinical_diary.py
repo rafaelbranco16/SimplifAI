@@ -29,7 +29,7 @@ class ClinicalDiary:
     def to_dict(self):
         return {
             "id": str(self.id),
-            "enytr_note": self.entry_note.to_dict(),
+            "entry_note": self.entry_note.to_dict(),
             "medical_consultation_text": self.medical_consultation_text.to_dict()
         }
 

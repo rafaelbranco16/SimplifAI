@@ -19,10 +19,9 @@ class MedicalNoteMapper:
     def to_obj(clinical_diary_dict: dict) -> ClinicalDiary:
         """Converts a dictionary to a ClinicalDiary object."""
         entry_note = EntryNoteMapper.to_obj(clinical_diary_dict['entry_note'])
-        
+        Logger.print_info(clinical_diary_dict)
         medical_consultation_text = MedicalConsultationText(
-            text=clinical_diary_dict['medical_consultation_text']['text'],
-            date=clinical_diary_dict['medical_consultation_text']['date']
+            text=clinical_diary_dict['medical_consultation_text']
         )
         
         clinical_diary = ClinicalDiary(

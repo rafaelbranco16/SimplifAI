@@ -1,4 +1,4 @@
-from logging import Logger
+from src.logger import Logger
 
 
 class DischargeText:

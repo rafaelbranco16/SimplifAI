@@ -38,11 +38,11 @@ class DischargeNoteService :
                                
         
 
- #formatar clinical diaries numa string
+    #formatar clinical diaries numa string
     def format_clinical_diaries(self, clinical_diaries: List[ClinicalDiary]) -> str:
         formatted_diaries = ""
         for diary in clinical_diaries:
-            formatted_diaries += f"Date: {diary.date}\nEntry: {diary.entry_text}\n"
+            formatted_diaries += f"Entry: {diary.entry_note}\n"
         return formatted_diaries
 
 

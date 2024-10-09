@@ -42,9 +42,12 @@ class MedicalService:
     
     async def find_clinical_diary_by_nif(self,nif:str):
         Logger.print_info(f"Searching for clinical diaries with NIF {nif}")
-        result:dict = await self.clinical_diary_adapter.find_by_nif(nif)
-        Logger.print_info("Found {} clinical")
+        result:list[dict] = await self.clinical_diary_adapter.find_by_nif(nif)
+        c_diaries:list[ClinicalDiary] = []
         if result is None:
             Logger.print_warning(f"No clicial diaries found for this patient")
             raise ModuleNotFoundError("No clicial diaries found for this patient")
-        return MedicalNoteMapper.to_obj(result)
+        for r in result:
+            c_diaries.append(MedicalNoteMapper.to_obj(r))
+
+        return c_diaries
