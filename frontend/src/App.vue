@@ -2,7 +2,7 @@
   <div id="app">
     <nav class="navbar">
       <div class="logo">
-        <router-link to="/">MyWebsite</router-link>
+        <router-link to="/">SimlpifAI</router-link>
       </div>
 
       <div class="menu" @click="toggleMenu">
@@ -11,8 +11,8 @@
 
       <ul class="nav-links" :class="{'show': isActive}">
         <li><router-link to="/" @click="closeMenu">Home</router-link></li>
-        <li><router-link to="/entry-note" @click="closeMenu">About</router-link></li>
-        <li><router-link to="/upload-audio" @click="closeMenu">Contact</router-link></li>
+        <li><router-link to="/entry-note" @click="closeMenu">Nota de Entrada</router-link></li>
+        <li><router-link to="/upload-audio" @click="closeMenu">Diário Clínico</router-link></li>
         <li><router-link to="/discharge-note" @click="closeMenu">Nota de Alta</router-link></li>
       </ul>
     </nav>
