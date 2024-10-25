@@ -56,4 +56,9 @@ class Router:
         discharge_note_controller: DischargeNoteController = loader.resolve(config.discharge_note_controller["name"])
         return await discharge_note_controller.create_discharge_note(nif)
 
+    @router.post("/generate-entry-note")
+    async def generate_entry_note_from_text(data: dict = Body(...)):
+        ctrl: AudioController = loader.resolve(config.audio_controller["name"])
+        entry_note = await ctrl.generate_entry_note_text(data.get("text"))
+        return {"entry_note": entry_note}
             

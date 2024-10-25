@@ -8,6 +8,7 @@ from src.adapters.llm_adapter import LLMAdapter
 from fastapi import UploadFile
 from langchain_core.prompts import ChatPromptTemplate
 import os
+import json
 
 class AudioService:
     def __init__(self) -> None:
@@ -47,3 +48,37 @@ Before each person add a line break and dont make any coment about the given tex
             f.write(await file.read())
 
         return file_location
+    
+    async def generate_entry_note_from_audio(self, file):
+        messages:ChatPromptTemplate = ChatPromptTemplate.from_messages([
+                ('system', '''You are an expert in creating structured JSON data from simple text. Based on the information I give you, respond only with JSON that follows this exact structure, using placeholders where needed:
+
+{{
+  "allergies": ["{{allergies}}"],
+  "identification": {{
+    "name": "{{name}}",
+    "gender": "{{gender}}",
+    "age": {{int of the age}},
+    "cognitive_status": "{{cognitive_status}}",
+    "functional_status": "{{functional_status}}",
+    "nif": "{{nif}}"
+  }},
+  "usual_medication": [
+    {{
+      "medication": "{{medication}}",
+      "dose": "{{dose}}"
+    }}
+  ],
+  "personal_background": {{
+    "medical_background": "{{medical_background}}",
+    "cirurgic_background": "{{cirurgic_background}}"
+  }}
+}}
+
+Only use information explicitly provided in the text, leaving placeholders if no information is available for a field. Replace the example values only when relevant data is provided. Return only a valid JSON object based on the information I provide.
+                 ''')
+,
+                ('user', f'{file}')
+            ])
+        
+        return await self.llm_adapter.send_messages(messages)
