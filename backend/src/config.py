@@ -3,7 +3,6 @@ from langfuse.callback import CallbackHandler
 from dotenv import load_dotenv
 from pymongo import MongoClient
 
-
 load_dotenv()
 
 llm_controller = {
@@ -66,8 +65,8 @@ discharge_note_service = {
 }
 
 llm_adapter = {
-    "name":"GroqAdapter",
-    "path":"src.adapters.groq_adapter"
+    "name":"GPTAdapter",
+    "path":"src.adapters.gpt_adapter"
 }
 
 entry_note_adapter = {
@@ -91,7 +90,7 @@ discharge_note_adapter = {
 }
 
 
-gpt_model = "gpt-3.5-turbo"
+gpt_model = "gpt-4o-mini"
 groq_model = "llama-3.1-70b-versatile"
 
 langfuse_host="https://cloud.langfuse.com"

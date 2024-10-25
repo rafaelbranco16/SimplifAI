@@ -6,6 +6,8 @@ from langchain_openai import ChatOpenAI
 from dotenv import load_dotenv
 import os
 from src import config
+from langfuse.callback import CallbackHandler
+
 
 class GPTAdapter(LLMAdapter):
     '''
@@ -45,3 +47,16 @@ class GPTAdapter(LLMAdapter):
         handler = config.langfuse_handler
         print(handler)
         return chain.invoke({},config={"callbacks":[config.langfuse_handler]})
+    
+    '''
+    Sends a list of messages defined elsewhere to the AI
+    '''
+    @observe()
+    async def send_messages(self, messages:ChatPromptTemplate):
+        langfuse_handler = CallbackHandler (
+            secret_key=os.getenv("LANGFUSE_SECRET_KEY"),
+            public_key=os.getenv("LANGFUSE_PUBLIC_KEY"),
+            host="https://cloud.langfuse.com"
+        )
+        chain = messages | self.model | StrOutputParser()
+        return chain.invoke({},config={"callbacks":[langfuse_handler]})

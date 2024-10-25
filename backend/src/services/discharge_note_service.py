@@ -22,12 +22,9 @@ class DischargeNoteService :
         
     async def generated_discharge(self, entry_note: EntryNote, clinical_diaries: List[ClinicalDiary]) -> DischargeText:
         try:
-            #Logger.print_info("service 1")
-            # Build the AI prompt using the discharge_note_prompt template
             prompt = prompts.discharge_note_prompt
             prompt = prompt.replace("[Insert the entry note exactly as you did above]", self.entry_note_service.format_entry_note(entry_note))
             prompt = prompt.replace("[Insert all the clinical diaries as you did above]", self.format_clinical_diaries(clinical_diaries))
-            #Logger.print_info("service 2")
             messages:ChatPromptTemplate = ChatPromptTemplate.from_messages([
                 ('system', prompt),
             ])
@@ -42,7 +39,7 @@ class DischargeNoteService :
     def format_clinical_diaries(self, clinical_diaries: List[ClinicalDiary]) -> str:
         formatted_diaries = ""
         for diary in clinical_diaries:
-            formatted_diaries += f"Entry: {diary.entry_note}\n"
+            formatted_diaries += f"Entry: {diary.medical_consultation_text.text}\n"
         return formatted_diaries
 
 

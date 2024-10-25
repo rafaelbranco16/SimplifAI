@@ -6,7 +6,7 @@ class MedicalConsultationText:
         Logger.print_info("Created a new medical consultation text")
 
     def __str__(self):
-        return f"MedicalConsultationText(Text: {self.text})"
+        return self.text
     
     '''
     Validates the parameters
@@ -18,4 +18,4 @@ class MedicalConsultationText:
             raise ValueError("The medical consultation text is invalid text is invalid")
         
     def to_dict(self):
-        return {"medical_consultation_text":self.text}
+        return self.text
