@@ -25,9 +25,9 @@ class MedicalController:
     @param id - The id of the clinical diary
     @param medical_consultation_text - The audio of the medical consultation converted into text
     '''
-    async def create_clinical_diary(self, id:str, medical_consultation_text:str):
+    async def create_clinical_diary(self, nif:str, medical_consultation_text:str):
         try:
-            entry_note:EntryNote = await self.entry_note_service.find_entry_note_by_id(id)
+            entry_note:EntryNote = await self.entry_note_service.find_entry_note_by_nif(nif)
             ai_text:MedicalConsultationText = await self.service.ai_summary(medical_consultation_text, entry_note)
             clinical_diary = await self.service.create_clinical_diary(entry_note, ai_text)
             saved_diary = await self.service.save_clinical_diary(clinical_diary)
