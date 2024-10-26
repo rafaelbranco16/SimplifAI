@@ -77,8 +77,8 @@ import axios from 'axios';
 export default {
   data() {
     return {
-      nifInput: '', // Stores the entered NIF value
-      formVisible: false, // Controls visibility of the discharge form
+      nifInput: '',
+      formVisible: false,
       dischargeData: {
         entry_note: {
           allergies: ["No allergies"],
