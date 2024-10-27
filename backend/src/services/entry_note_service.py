@@ -2,6 +2,8 @@ from src.dto.entry_note_dto import EntryNoteDto
 from src.domain.entry_note import EntryNote
 from src.adapters.entry_note_adapter import EntryNoteAdapter
 from src.domain.usual_medication import UsualMedication
+from src.domain.MCDT import MCDT
+
 from src.domain.personal_background import PersonalBackground
 from src.domain.identification import Identification
 from src.logger import Logger
@@ -35,13 +37,21 @@ class EntryNoteService:
             entry_note_dto["personal_background"]["medical_background"],
             entry_note_dto["personal_background"]["cirurgic_background"]
         )
-
+        mcdts:list[UsualMedication] = []
+        for mcdt in entry_note_dto["mcdts"]:
+            um:MCDT = MCDT(mcdt["type"], mcdt["text"])
+            mcdts.append(um)
+        if entry_note_dto == None or entry_note_dto["actual_sickness_history"] == "":
+            raise NameError("The actual_sickness_history is invalid")
+        ash = entry_note_dto["actual_sickness_history"]
         entry_note:EntryNote = EntryNote(
             None,
             identification,
             entry_note_dto["allergies"],
             usual_medication_list,
-            personal_background
+            personal_background,
+            ash,
+            mcdts
         )
         return await self.entry_note_adapter.save_entry_note(entry_note)
     

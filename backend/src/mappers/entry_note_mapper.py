@@ -2,6 +2,8 @@ from src.domain.entry_note import EntryNote
 from src.domain.identification import Identification
 from src.domain.usual_medication import UsualMedication
 from src.domain.personal_background import PersonalBackground
+from src.domain.MCDT import MCDT
+
 
 class EntryNoteMapper:
     @staticmethod
@@ -32,11 +34,20 @@ class EntryNoteMapper:
             cirurgic_background=entry_note_dict['personal_background']['cirurgic_background']
         )
 
+        mcdts = [
+            MCDT(
+                type=mcdt['type'],
+                text=mcdt['text']
+            ) for mcdt in entry_note_dict['mcdts']
+        ]
+
         return EntryNote(
             id=entry_note_dict.get('id'),
             identification=identification,
             allergies=entry_note_dict['allergies'],
             usual_medication=usual_medication,
-            personal_background=personal_background
+            personal_background=personal_background,
+            actual_sickness_history=entry_note_dict["actual_sickness_history"],
+            mcdts=mcdts
         )
 

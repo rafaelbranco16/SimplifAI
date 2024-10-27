@@ -99,7 +99,14 @@ export default {
           personal_background: {
             medical_background: "",
             cirurgic_background: ""
-          }
+          },
+          actual_sickness_history: "",
+          mcdts: [
+            {
+              type:"",
+              text: ""  
+            }
+          ]
         },
         discharge_text: "" // Holds the discharge summary
       }

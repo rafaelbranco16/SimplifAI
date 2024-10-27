@@ -1,155 +1,170 @@
 <template>
-    <div id="entry-note" class="centered-container">
-      <h1>Entry Note</h1>
-  
-      <section class="identification">
-        <h2>Identification</h2>
-        <div class="form-group">
-          <label for="name">Name:</label>
-          <input type="text" id="name" v-model="formData.name" placeholder="Enter name" />
-        </div>
-        <div class="form-group">
-          <label for="gender">Gender:</label>
-          <select id="gender" v-model="formData.gender">
-            <option value="" disabled>Select gender</option>
-            <option>Male</option>
-            <option>Female</option>
-            <option>Other</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label for="age">Age:</label>
-          <input type="number" id="age" v-model="formData.age" placeholder="Enter age" />
-        </div>
-        <div class="form-group">
-          <label for="cognitiveStatus">Cognitive Status:</label>
-          <input type="text" id="cognitiveStatus" v-model="formData.cognitiveStatus" placeholder="Enter cognitive status" />
-        </div>
-        <div class="form-group">
-          <label for="functionalStatus">Functional Status:</label>
-          <input type="text" id="functionalStatus" v-model="formData.functionalStatus" placeholder="Enter functional status" />
-        </div>
-      </section>
-  
-      <section class="dynamic-fields">
-        <h2>Allergies</h2>
-        <div v-for="(allergy, index) in formData.allergies" :key="index" class="form-group">
-          <!-- Use v-model for two-way binding to ensure the input stays in sync with the data -->
-          <input type="text" v-model="formData.allergies[index]" placeholder="Enter allergy" />
-          <button @click="removeAllergy(index)">Remove</button>
-        </div>
-        <button @click="addAllergy">Add Allergy</button>
-      </section>
-  
-      <section class="background">
-        <h2>Medical Background</h2>
-        <textarea v-model="formData.medicalBackground" placeholder="Enter medical background"></textarea>
-  
-        <h2>Surgical Background</h2>
-        <textarea v-model="formData.surgicalBackground" placeholder="Enter surgical background"></textarea>
-      </section>
-  
-      <section class="dynamic-fields">
-        <h2>Medications</h2>
-        <div v-for="(medication, index) in formData.medications" :key="index" class="form-group">
-          <!-- Use v-model for two-way binding to ensure data stays in sync with formData.medications -->
-          <input type="text" v-model="medication.name" placeholder="Medication" />
-          <input type="text" v-model="medication.dose" placeholder="Dose" />
-          <button @click="removeMedication(index)">Remove</button>
-        </div>
-        <button @click="addMedication">Add Medication</button>
-      </section>
-  
-      <button class="submit-button" @click="submitForm">Submit</button>
-    </div>
-  </template>
-  
-  <script>
-  export default {
-    data() {
-      return {
-        formData: {
-          name: '',
-          gender: '',
-          age: null,
-          cognitiveStatus: '',
-          functionalStatus: '',
-          allergies: [],
-          medicalBackground: '',
-          surgicalBackground: '',
-          medications: []
-        }
-      };
+  <div id="entry-note" class="centered-container">
+    <h1>Entry Note</h1>
+
+    <section class="identification">
+      <h2>Identification</h2>
+      <div class="form-group">
+        <label for="nif">NIF:</label>
+        <input type="text" id="nif" v-model="formData.nif" placeholder="NIF" />
+      </div>
+      <div class="form-group">
+        <label for="name">Name:</label>
+        <input type="text" id="name" v-model="formData.name" placeholder="Enter name" />
+      </div>
+      <div class="form-group">
+        <label for="gender">Gender:</label>
+        <select id="gender" v-model="formData.gender">
+          <option value="" disabled>Select gender</option>
+          <option>Male</option>
+          <option>Female</option>
+          <option>Other</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="age">Age:</label>
+        <input type="number" id="age" v-model="formData.age" placeholder="Enter age" />
+      </div>
+      <div class="form-group">
+        <label for="cognitiveStatus">Cognitive Status:</label>
+        <input type="text" id="cognitiveStatus" v-model="formData.cognitiveStatus" placeholder="Enter cognitive status" />
+      </div>
+      <div class="form-group">
+        <label for="functionalStatus">Functional Status:</label>
+        <input type="text" id="functionalStatus" v-model="formData.functionalStatus" placeholder="Enter functional status" />
+      </div>
+    </section>
+
+    <section class="dynamic-fields">
+      <h2>Allergies</h2>
+      <div v-for="(allergy, index) in formData.allergies" :key="index" class="form-group">
+        <input type="text" v-model="formData.allergies[index]" placeholder="Enter allergy" />
+        <button @click="removeAllergy(index)">Remove</button>
+      </div>
+      <button @click="addAllergy">Add Allergy</button>
+    </section>
+
+    <section class="background">
+      <h2>Medical Background</h2>
+      <textarea v-model="formData.medicalBackground" placeholder="Enter medical background"></textarea>
+
+      <h2>Surgical Background</h2>
+      <textarea v-model="formData.surgicalBackground" placeholder="Enter surgical background"></textarea>
+    </section>
+
+    <section class="dynamic-fields">
+      <h2>Medications</h2>
+      <div v-for="(medication, index) in formData.medications" :key="index" class="form-group">
+        <input type="text" v-model="medication.name" placeholder="Medication" />
+        <input type="text" v-model="medication.dose" placeholder="Dose" />
+        <button @click="removeMedication(index)">Remove</button>
+      </div>
+      <button @click="addMedication">Add Medication</button>
+    </section>
+
+    <section class="sickness-history">
+      <h2>Actual Sickness History</h2>
+      <textarea v-model="formData.actualSicknessHistory" placeholder="Enter sickness history"></textarea>
+    </section>
+
+    <section class="dynamic-fields">
+      <h2>MCDTs</h2>
+      <div v-for="(mcdt, index) in formData.mcdts" :key="index" class="form-group">
+        <input type="text" v-model="mcdt.type" placeholder="MCDT Type" />
+        <input type="text" v-model="mcdt.text" placeholder="MCDT Text" />
+        <button @click="removeMCDT(index)">Remove</button>
+      </div>
+      <button @click="addMCDT">Add MCDT</button>
+    </section>
+
+    <button class="submit-button" @click="submitForm">Submit</button>
+  </div>
+</template>
+
+<script>
+export default {
+  data() {
+    return {
+      formData: {
+        name: '',
+        gender: '',
+        age: null,
+        cognitiveStatus: '',
+        functionalStatus: '',
+        allergies: [],
+        medicalBackground: '',
+        surgicalBackground: '',
+        medications: [],
+        actualSicknessHistory: '',
+        mcdts: [],
+        nif: ''
+      }
+    };
+  },
+  methods: {
+    addAllergy() {
+      this.formData.allergies.push('');
     },
-    methods: {
-      addAllergy() {
-        this.formData.allergies.push('');
-      },
-      removeAllergy(index) {
-        this.formData.allergies.splice(index, 1);
-      },
-      updateAllergy(index, value) {
-        this.$set(this.formData.allergies, index, value);
-      },
-      addMedication() {
-        this.formData.medications.push({ name: '', dose: '' });
-      },
-      removeMedication(index) {
-        this.formData.medications.splice(index, 1);
-      },
-      updateMedication(index, field, value) {
-        this.$set(this.formData.medications[index], field, value);
-      },
-      async submitForm() {
-        // Create the JSON object with the desired structure
-        const submissionData = {
-          allergies: this.formData.allergies.length > 0 ? this.formData.allergies : ["No allergies"],
-          identification: {
-            name: this.formData.name,
-            gender: this.formData.gender,
-            age: this.formData.age,
-            cognitive_status: this.formData.cognitiveStatus,
-            functional_status: this.formData.functionalStatus
-          },
-          usual_medication: this.formData.medications.map(medication => ({
-            medication: medication.name,
-            dose: medication.dose
-          })),
-          personal_background: {
-            medical_background: this.formData.medicalBackground,
-            cirurgic_background: this.formData.surgicalBackground
-          }
-        };
+    removeAllergy(index) {
+      this.formData.allergies.splice(index, 1);
+    },
+    addMedication() {
+      this.formData.medications.push({ name: '', dose: '' });
+    },
+    removeMedication(index) {
+      this.formData.medications.splice(index, 1);
+    },
+    addMCDT() {
+      this.formData.mcdts.push({ type: '', text: '' });
+    },
+    removeMCDT(index) {
+      this.formData.mcdts.splice(index, 1);
+    },
+    async submitForm() {
+      const submissionData = {
+        allergies: this.formData.allergies.length > 0 ? this.formData.allergies : ["No allergies"],
+        identification: {
+          name: this.formData.name,
+          gender: this.formData.gender,
+          age: this.formData.age,
+          cognitive_status: this.formData.cognitiveStatus,
+          functional_status: this.formData.functionalStatus,
+          nif: this.formData.nif
+        },
+        usual_medication: this.formData.medications.map(medication => ({
+          medication: medication.name,
+          dose: medication.dose
+        })),
+        personal_background: {
+          medical_background: this.formData.medicalBackground,
+          cirurgic_background: this.formData.surgicalBackground
+        },
+        actual_sickness_history: this.formData.actualSicknessHistory,
+        mcdts: this.formData.mcdts.map(mcdt => ({
+          type: mcdt.type,
+          text: mcdt.text
+        }))
+      };
 
-        try {
-          // Perform the POST request using fetch
-          const response = await fetch('http://localhost:8000/entry-note', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(submissionData)  // Send the JSON data
-          });
+      try {
+        const response = await fetch('http://localhost:8000/entry-note', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(submissionData)
+        });
 
-          // Check if the response was successful
-          if (!response.ok) {
-            throw new Error(`HTTP error! status: ${response.status}`);
-          }
-
-          // Parse the JSON response (if any)
-          const result = await response.json();
-          console.log('Form submitted successfully:', result);
-          alert('Form submitted successfully!');
-
-        } catch (error) {
-          // Handle errors (network errors, invalid response, etc.)
-          console.error('There was a problem with the submission:', error);
-          alert('Failed to submit the form.');
-        }
+        if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
+        const result = await response.json();
+        console.log('Form submitted successfully:', result);
+        alert('Form submitted successfully!');
+      } catch (error) {
+        console.error('There was a problem with the submission:', error);
+        alert('Failed to submit the form.');
       }
     }
-  };
-  </script>
+  }
+};
+</script>
   
   <style scoped>
   .centered-container {
