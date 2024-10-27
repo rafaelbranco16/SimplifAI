@@ -33,6 +33,7 @@ class DischargeNoteController:
 
             ai_text = await self.service.generated_discharge(entry_note, clinical_diaries)
             discharge_note = await self.service.create_discharge_note(entry_note, ai_text)
+            await self.service.save_discharge_note(discharge_note)
 
             return {'message': discharge_note}
         except ModuleNotFoundError as not_found:

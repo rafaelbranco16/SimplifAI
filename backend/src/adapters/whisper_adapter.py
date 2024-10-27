@@ -2,9 +2,7 @@ from src.adapters.audio_adapter import AudioAdapter
 from groq import Groq
 import os
 import whisper
-import torch
 from transformers import WhisperProcessor, WhisperForConditionalGeneration
-import ffmpeg
 
 class WhisperAdapter(AudioAdapter):
     def __init__(self) -> None:
