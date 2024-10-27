@@ -23,5 +23,6 @@ adapters = [
     config.entry_note_adapter,
     config.clinical_diary_adapter,
     config.audio_adapter,
-    config.discharge_note_adapter
+    config.discharge_note_adapter,
+    config.clinical_history_adapter
 ]

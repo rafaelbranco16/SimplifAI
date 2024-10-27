@@ -37,7 +37,9 @@ Instructions:
     Organize the information clearly under each of the requested sections.
     Ensure that the summary is concise but contains all relevant details from the text.
     Highlight any changes in the patient's condition or treatment between subsequent reports if multiple consultations are provided.
-'''
+
+Answer em PT-PT
+    '''
 
 
 discharge_note_prompt='''

@@ -3,6 +3,7 @@ import EntryNoteView from '@/views/EntryNoteView.vue'
 import AudioView from '@/views/AudioView.vue'
 import DischargeNoteView from '@/views/DischargeNoteView.vue'
 import Home from '@/views/Home.vue'
+import ClinicalHistory from '@/views/ClinicalHistory.vue'
 
 
 const router = createRouter({
@@ -31,6 +32,11 @@ const router = createRouter({
       path: '/discharge-note',
       name: 'discharge-note',
       component: DischargeNoteView
+    },
+    {
+      path: '/clinical-history',
+      name: 'clinical-history',
+      component: ClinicalHistory
     }
   ]
 })

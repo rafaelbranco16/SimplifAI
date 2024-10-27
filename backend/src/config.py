@@ -79,6 +79,11 @@ clinical_diary_adapter = {
     "path":"src.adapters.clinical_diary_adapter"
 }
 
+clinical_history_adapter = {
+    "name":"ClinicalHistoryAdapter",
+    "path":"src.adapters.clinical_history_adapter"
+}
+
 audio_adapter = {
     "name":"WhisperAdapter",
     "path":"src.adapters.whisper_adapter"

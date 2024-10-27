@@ -18,9 +18,9 @@
       </button>
     </div>
 
-    <p v-if="transcription" class="transcription">
+    <textarea v-if="transcription" class="transcription">
       Transcription: {{ transcription }}
-    </p>
+    </textarea>
 
     <div v-if="jsonData" class="form">
       <h3>Editar Informações</h3>
@@ -76,29 +76,26 @@
     </div>
   </div>
   <div class="right-container">
-    <h1>Diário clínico</h1>
-    <!-- Controls for Recording and Uploading -->
-    <div class="controls">
-      <button class="record-btn" @click="isRecording2 ? stopRecording2() : startRecording2()">
-        {{ isRecording2 ? 'Parar gravação' : 'Começar gravação' }}
-      </button>
+  <h1>Diário clínico</h1>
+  <div class="controls">
+    <button class="record-btn" @click="isRecording2 ? stopRecording2() : startRecording2()">
+      {{ isRecording2 ? 'Parar gravação' : 'Começar gravação' }}
+    </button>
 
-      <audio v-if="audioURL2" :src="audioURL2" controls class="audio-player"></audio>
+    <audio v-if="audioURL2" :src="audioURL2" controls class="audio-player"></audio>
 
-      <button class="upload-btn" @click="uploadAudio2" :disabled="!audioURL2">
-        Enviar para tradução.
-      </button>
+    <button class="upload-btn" @click="uploadAudio2" :disabled="!audioURL2">
+      Enviar para tradução.
+    </button>
 
-      <button class="send-btn" @click="sendTextToBackend2" :disabled="!transcription2">
-        Criar diário clínico
-      </button>
-    </div>
-
-    <p v-if="transcription2" class="transcription">
-      Transcription: {{ transcription2 }}
-    </p>
-
+    <button class="send-btn" @click="sendTextToBackend2" :disabled="!transcription2">
+      Criar diário clínico
+    </button>
   </div>
+
+  <textarea v-model="transcription2" class="transcription" placeholder="Escreva aqui ou grave para preencher..."></textarea>
+</div>
+
 </template>
 
 <script>
@@ -118,7 +115,26 @@ export default {
       audioURL2: null,
       transcription: null,
       transcription2: null,
-      jsonData: null,
+      jsonData: {
+      entry_note: {
+        identification: {
+          name: '',
+          gender: '',
+          age: null,
+          cognitive_status: '',
+          functional_status: '',
+          nif: ''
+        },
+        usual_medication: [
+          { medication: '', dose: '' }
+        ],
+        allergies: [''],
+        personal_background: {
+          medical_background: '',
+          surgical_background: ''
+        }
+      }
+    }
     };
   },
   methods: {

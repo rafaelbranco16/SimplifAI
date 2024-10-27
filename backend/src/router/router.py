@@ -35,6 +35,11 @@ class Router:
         ctrl: MedicalController = loader.resolve(config.medical_controller["name"])
         return await ctrl.create_clinical_diary(id, mct)
     
+    @router.post("/clinical-history/")
+    async def create_clinical_diary(id: str = Body(...), mct: str = Body(...)):
+        ctrl: MedicalController = loader.resolve(config.medical_controller["name"])
+        return await ctrl.create_clinical_history(id, mct)
+    
     @router.post("/upload-audio/")
     async def generate_text_from_audio(file: UploadFile = File(...)):
         ctrl: AudioController = loader.resolve(config.audio_controller["name"])
