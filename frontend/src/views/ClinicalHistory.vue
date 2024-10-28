@@ -11,7 +11,7 @@
       <button class="upload-btn" @click="uploadAudio2" :disabled="!audioURL2">
         Enviar para tradução
       </button>
-      <input v-model="nif" type="text" id="nif" />
+      <input v-model="nif" type="text" id="nif" class="input-field" placeholder="Enter NIF" />
 
       <button class="send-btn" @click="sendTextToBackend2" :disabled="!transcription2">
         Criar diário clínico
@@ -91,54 +91,65 @@ export default {
 .clinical-history-container {
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-family: 'Arial', sans-serif;
-  margin: 2% auto;
-  padding: 20px;
-  max-width: 600px;
-  background-color: #f9f9f9;
+  align-items: center;
+  padding: 2rem;
+  background-color: var(--color-background, #333);
+  color: var(--color-text, #f5f5f5);
   border-radius: 10px;
-  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1.5rem;
+  color: var(--color-heading, #f5f5f5);
 }
 
 .controls {
   display: flex;
   flex-direction: column;
-  align-items: center;
-  margin-bottom: 20px;
+  align-items: stretch;
+  width: 100%;
 }
 
 .record-btn, .upload-btn, .send-btn {
-  padding: 12px 20px;
-  background-color: #4CAF50;
-  width: 100%;
-  color: white;
+  padding: 0.75rem 1.25rem;
+  font-size: 1rem;
+  color: #fff;
+  background-color: hsla(160, 100%, 37%, 1);
   border: none;
-  border-radius: 5px;
+  border-radius: 4px;
   cursor: pointer;
-  font-size: 16px;
+  margin: 0.5rem 0;
   transition: background-color 0.3s ease;
-  margin: 5px 0;
 }
 
 .record-btn:hover, .upload-btn:hover, .send-btn:hover {
-  background-color: #45a049;
+  background-color: hsla(160, 100%, 37%, 0.8);
 }
 
-.upload-btn:disabled, .send-btn:disabled {
-  background-color: #ccc;
+.record-btn:disabled, .upload-btn:disabled, .send-btn:disabled {
+  background-color: #555;
   cursor: not-allowed;
 }
 
-.transcription {
-  margin-top: 20px;
-  font-size: 14px;
-  color: #333;
-  background-color: #e8f5e9;
-  padding: 10px;
-  border-radius: 5px;
+.input-field, .transcription {
   width: 100%;
-  text-align: center;
+  padding: 0.75rem;
+  margin: 0.5rem 0;
+  border: 1px solid var(--color-border, #777);
+  border-radius: 4px;
+  background-color: #444;
+  color: #fff;
+  font-size: 1rem;
+  box-sizing: border-box;
+}
+
+.transcription {
+  resize: vertical;
+  min-height: 100px;
 }
 </style>
