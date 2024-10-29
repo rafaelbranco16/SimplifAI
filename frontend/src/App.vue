@@ -2,7 +2,7 @@
   <div id="app">
     <nav class="navbar">
       <div class="logo">
-        <router-link to="/">SimlpifAI</router-link>
+        <router-link to="/">SimplifAI</router-link>
       </div>
 
       <div class="menu" @click="toggleMenu">

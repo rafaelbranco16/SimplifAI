@@ -68,7 +68,7 @@ export default {
         });
         this.transcription2 = response.data.transcription;
       } catch (error) {
-        console.error('Error uploading audio:', error);
+        window.alert('Erroa ao enviar o audio.');
       }
     },
     async sendTextToBackend2() {
@@ -78,9 +78,9 @@ export default {
           "id": this.nif,
           "mct": this.transcription2
         });
-        console.log('Texto enviado com sucesso!', response.data);
+        window.alert('Texto enviado com sucesso!', response.data);
       } catch (error) {
-        console.error('Erro ao enviar o texto:', error);
+        window.alert('Erro ao enviar o texto:', error);
       }
     }
   }

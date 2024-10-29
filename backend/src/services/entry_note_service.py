@@ -84,6 +84,8 @@ class EntryNoteService:
             f"Cognitive Status: {identification.cognitive_status}\n"
             f"Functional Status: {identification.functional_status}\n"
             f"NIF: {identification.nif}\n"
+            f"Actual Sickness: {entry_note.actual_sickness_history}\n"
+            f"MCDTs: {entry_note.mcdts}"    
         )
 
         # Format allergies

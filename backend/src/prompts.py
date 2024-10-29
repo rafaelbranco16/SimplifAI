@@ -57,10 +57,17 @@ Create a discharge note that includes:
 Patient Details: Include patient’s basic information (age, autonomy, cognitive status).
 Personal History: List relevant medical history and regular medications.
 Hospitalization Summary:
-The main problem or diagnosis addressed during hospitalization.
-Details of the treatment provided, including surgery or major interventions.
-Clinical progression, mentioning the improvement or worsening of symptoms.
-Summary of analytical or diagnostic tests performed and their results.
-Outcome: Clearly mention the current condition of the patient, treatment continuation (if any), and instructions for post-discharge care.
+    The main problem or diagnosis addressed during hospitalization.
+    The actual sickness and MCDTs that are present on the Entry Note
+
+Treatment Evolution:
+    Details of the treatment provided, including surgery or major interventions.
+    Clinical progression, mentioning the improvement or worsening of symptoms.
+    Summary of analytical or diagnostic tests performed and their results.
+
+Clearly mention the current condition of the patient, treatment continuation (if any), and instructions for post-discharge care.
 Medication on Discharge: List any medications the patient will continue taking after discharge.
-Ensure the note is written in the same language and follows the style of medical discharge notes.'''
+Ensure the note is written in the same language and follows the style of medical discharge notes.
+
+Don't add anything about signatures.
+'''

@@ -1,83 +1,83 @@
 <template>
   <div id="entry-note" class="centered-container">
-    <h1>Entry Note</h1>
+    <h1>Nota de entrada</h1>
 
     <section class="identification">
-      <h2>Identification</h2>
+      <h2>Identificação</h2>
       <div class="form-group">
         <label for="nif">NIF:</label>
-        <input type="text" id="nif" v-model="formData.nif" placeholder="NIF" />
+        <input type="text" id="nif" v-model="formData.nif"/>
       </div>
       <div class="form-group">
-        <label for="name">Name:</label>
-        <input type="text" id="name" v-model="formData.name" placeholder="Enter name" />
+        <label for="name">Nome:</label>
+        <input type="text" id="name" v-model="formData.name"/>
       </div>
       <div class="form-group">
-        <label for="gender">Gender:</label>
+        <label for="gender">Género:</label>
         <select id="gender" v-model="formData.gender">
-          <option value="" disabled>Select gender</option>
-          <option>Male</option>
-          <option>Female</option>
-          <option>Other</option>
+          <option value="" disabled>Selecione o género...</option>
+          <option>Masculino</option>
+          <option>Feminino</option>
+          <option>Outro</option>
         </select>
       </div>
       <div class="form-group">
-        <label for="age">Age:</label>
-        <input type="number" id="age" v-model="formData.age" placeholder="Enter age" />
+        <label for="age">Idade:</label>
+        <input type="number" id="age" v-model="formData.age"/>
       </div>
       <div class="form-group">
-        <label for="cognitiveStatus">Cognitive Status:</label>
-        <input type="text" id="cognitiveStatus" v-model="formData.cognitiveStatus" placeholder="Enter cognitive status" />
+        <label for="cognitiveStatus">Estado cognitivo:</label>
+        <input type="text" id="cognitiveStatus" v-model="formData.cognitiveStatus"/>
       </div>
       <div class="form-group">
-        <label for="functionalStatus">Functional Status:</label>
-        <input type="text" id="functionalStatus" v-model="formData.functionalStatus" placeholder="Enter functional status" />
+        <label for="functionalStatus">Estado funcional:</label>
+        <input type="text" id="functionalStatus" v-model="formData.functionalStatus"/>
       </div>
     </section>
 
     <section class="dynamic-fields">
-      <h2>Allergies</h2>
+      <h2>Alergias</h2>
       <div v-for="(allergy, index) in formData.allergies" :key="index" class="form-group">
         <input type="text" v-model="formData.allergies[index]" placeholder="Enter allergy" />
-        <button @click="removeAllergy(index)">Remove</button>
+        <button @click="removeAllergy(index)">Remover</button>
       </div>
-      <button @click="addAllergy">Add Allergy</button>
+      <button @click="addAllergy">Adicionar</button>
     </section>
 
     <section class="background">
-      <h2>Medical Background</h2>
-      <textarea v-model="formData.medicalBackground" placeholder="Enter medical background"></textarea>
+      <h2>Histórico médico</h2>
+      <textarea v-model="formData.medicalBackground"></textarea>
 
-      <h2>Surgical Background</h2>
-      <textarea v-model="formData.surgicalBackground" placeholder="Enter surgical background"></textarea>
+      <h2>Histórico de cirurgias</h2>
+      <textarea v-model="formData.surgicalBackground"></textarea>
     </section>
 
     <section class="dynamic-fields">
-      <h2>Medications</h2>
+      <h2>Medicação</h2>
       <div v-for="(medication, index) in formData.medications" :key="index" class="form-group">
-        <input type="text" v-model="medication.name" placeholder="Medication" />
-        <input type="text" v-model="medication.dose" placeholder="Dose" />
-        <button @click="removeMedication(index)">Remove</button>
+        <input type="text" v-model="medication.name" placeholder="Medicação"/>
+        <input type="text" v-model="medication.dose" placeholder="Dose"/>
+        <button @click="removeMedication(index)">Remover</button>
       </div>
-      <button @click="addMedication">Add Medication</button>
+      <button @click="addMedication">Adicionar</button>
     </section>
 
     <section class="sickness-history">
-      <h2>Actual Sickness History</h2>
-      <textarea v-model="formData.actualSicknessHistory" placeholder="Enter sickness history"></textarea>
+      <h2>História da doença atual</h2>
+      <textarea v-model="formData.actualSicknessHistory"></textarea>
     </section>
 
     <section class="dynamic-fields">
       <h2>MCDTs</h2>
       <div v-for="(mcdt, index) in formData.mcdts" :key="index" class="form-group">
-        <input type="text" v-model="mcdt.type" placeholder="MCDT Type" />
-        <input type="text" v-model="mcdt.text" placeholder="MCDT Text" />
+        <input type="text" v-model="mcdt.type"/>
+        <input type="text" v-model="mcdt.text"/>
         <button @click="removeMCDT(index)">Remove</button>
       </div>
-      <button @click="addMCDT">Add MCDT</button>
+      <button @click="addMCDT">Adicionar</button>
     </section>
 
-    <button class="submit-button" @click="submitForm">Submit</button>
+    <button class="submit-button" @click="submitForm">Enviar</button>
   </div>
 </template>
 
@@ -156,10 +156,10 @@ export default {
         if (!response.ok) throw new Error(`HTTP error! status: ${response.status}`);
         const result = await response.json();
         console.log('Form submitted successfully:', result);
-        alert('Form submitted successfully!');
+        alert('A nota de entrada foi criada!');
       } catch (error) {
         console.error('There was a problem with the submission:', error);
-        alert('Failed to submit the form.');
+        alert('Falha ao submeter.');
       }
     }
   }

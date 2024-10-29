@@ -7,22 +7,26 @@
       <DownloadButton 
         description="Notas de Entrada" 
         :files="[
-          { name: 'Nota de Entrada 1', link: '/pdfs/discharge_note_1.pdf' },
-          { name: 'Nota de Entrada 2', link: '/pdfs/discharge_note_2.pdf' }
+          { name: 'Nota de Entrada 1', link: '/pdfs/entry_notes/entry_note_1.pdf' },
+          { name: 'Nota de Entrada 3', link: '/pdfs/entry_notes/entry_note_2.pdf' },
+          { name: 'Nota de Entrada 4', link: '/pdfs/entry_notes/entry_note_3.pdf' },
+          { name: 'Nota de Entrada 5', link: '/pdfs/entry_notes/entry_note_4.pdf' }
         ]"
       />
       <DownloadButton 
         description="Diários Clínicos" 
         :files="[
-          { name: 'Diário Clínico 1', link: '/path/to/data1.csv' },
-          { name: 'Diário Clínico 2', link: '/path/to/data2.csv' }
+          { name: 'Diário Clínico 1', link: '/pdfs/clinical_diaries/clinical_diary_1.pdf' },
+          { name: 'Diário Clínico 3', link: '/pdfs/clinical_diaries/clinical_diary_2.pdf' },
+          { name: 'Diário Clínico 4', link: '/pdfs/clinical_diaries/clinical_diary_3.pdf' },
+          { name: 'Diário Clínico 5', link: '/pdfs/clinical_diaries/clinical_diary_4.pdf' }
         ]"
       />
       <DownloadButton 
         description="Notas de Alta" 
         :files="[
-          { name: 'Nota de Alta 1', link: '/path/to/document1.docx' },
-          { name: 'Nota de Alta 2', link: '/path/to/document2.docx' }
+          { name: 'Nota de Alta 1', link: '/pdfs/discharge_notes/discharge_note_1.pdf' },
+          { name: 'Nota de Alta 4', link: '/pdfs/discharge_notes/discharge_note_3.pdf' }
         ]"
       />
     </div>

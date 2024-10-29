@@ -78,16 +78,8 @@
   <div class="right-container">
   <h1>Diário clínico</h1>
   <div class="controls">
-    <button class="record-btn" @click="isRecording2 ? stopRecording2() : startRecording2()">
-      {{ isRecording2 ? 'Parar gravação' : 'Começar gravação' }}
-    </button>
-
-    <audio v-if="audioURL2" :src="audioURL2" controls class="audio-player"></audio>
-
-    <button class="upload-btn" @click="uploadAudio2" :disabled="!audioURL2">
-      Enviar para tradução.
-    </button>
-
+    NIF:<input v-model="nif2" id="medical_background" type="text" />
+    <br/>
     <button class="send-btn" @click="sendTextToBackend2" :disabled="!transcription2">
       Criar diário clínico
     </button>
@@ -134,7 +126,8 @@ export default {
           surgical_background: ''
         }
       }
-    }
+    },
+    nif2: null
     };
   },
   methods: {
@@ -234,12 +227,12 @@ export default {
       if (!this.transcription2) return;
       try {
         const response = await axios.post(`${config.ip}/clinical-diary/`, {
-          "id": this.jsonData.entry_note.identification.nif,
+          "id": this.nif2,
           "mct":this.transcription2
         });
-        console.log('Texto enviado com sucesso!', response.data);
+        window.alert('Diário clínico enviado com sucesso!');
       } catch (error) {
-        console.error('Erro ao enviar o texto:', error);
+        window.alert('Erro ao enviar o texto:', error);
       }
     },
     
