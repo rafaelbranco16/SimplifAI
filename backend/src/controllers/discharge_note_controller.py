@@ -8,7 +8,7 @@ from src import config
 from src.loaders import loader
 from src.logger import Logger
 from fastapi.responses import JSONResponse
-
+from src.dto.discharge_note_dto import DischargeNoteDto
 from src.services.entry_note_service import EntryNoteService
 
 
@@ -33,7 +33,7 @@ class DischargeNoteController:
 
             ai_text = await self.service.generated_discharge(entry_note, clinical_diaries)
             discharge_note = await self.service.create_discharge_note(entry_note, ai_text)
-            await self.service.save_discharge_note(discharge_note)
+            #await self.service.save_discharge_note(discharge_note)
 
             return {'message': discharge_note}
         except ModuleNotFoundError as not_found:
@@ -42,5 +42,14 @@ class DischargeNoteController:
                     status_code=404,
                     content={"message": str(not_found)}
                 )
+            
+    async def save_discharge_note_text(self, discharge_note_dto:DischargeNoteDto):
+        #try:
+            Logger.print_info(discharge_note_dto)
+            discharge_note= await self.service.save_discharge_note(discharge_note_dto)
+            return discharge_note
+
+        #except Exception as e:
+            #return {"message":f"Error creating the discharge note:{e}"}
             
 

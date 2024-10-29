@@ -84,8 +84,7 @@ class EntryNoteService:
             f"Cognitive Status: {identification.cognitive_status}\n"
             f"Functional Status: {identification.functional_status}\n"
             f"NIF: {identification.nif}\n"
-            f"Actual Sickness: {entry_note.actual_sickness_history}\n"
-            f"MCDTs: {entry_note.mcdts}"    
+            f"Actual Sickness: {entry_note.actual_sickness_history}\n"  
         )
 
         # Format allergies
@@ -99,6 +98,13 @@ class EntryNoteService:
         else:
             formatted_medications += "None\n"
 
+        # Format usual medications
+        formatted_mcdts = "MCDTSs:\n"
+        if entry_note.mcdts:
+            for mcdt in entry_note.mcdts:
+                formatted_mcdts += f"- MCDT: {mcdt.type}, Description: {mcdt.text}\n"
+        else:
+            formatted_mcdts += "Nenhuma\n"
         # Format personal background
         personal_background = entry_note.personal_background
         formatted_background = (
@@ -112,6 +118,7 @@ class EntryNoteService:
             f"{formatted_allergies}\n"
             f"{formatted_medications}\n"
             f"Personal Background:\n{formatted_background}"
+            f"MCDTs:\n{formatted_mcdts}"
         )
 
         return formatted_entry_note

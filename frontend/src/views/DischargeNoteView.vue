@@ -64,7 +64,8 @@
       <!-- Discharge Text -->
       <h3>Nota de alta</h3>
       <div>
-        <textarea v-model="dischargeData.discharge_text" id="discharge_text" readonly></textarea>
+        <textarea v-model="dischargeData.discharge_text" id="discharge_text"></textarea>
+        <button class="save-button" @click="saveForm">Salvar nota de entrada</button>
       </div>
     </div>
   </div>
@@ -107,7 +108,7 @@ export default {
             }
           ]
         },
-        discharge_text: "" // Holds the discharge summary
+        discharge_text: ""
       }
     };
   },
@@ -123,6 +124,25 @@ export default {
         if (response.data) {
           this.dischargeData = response.data.message;
           this.formVisible = true; // Show the form after receiving the data
+        } else {
+          this.formVisible = false;
+          alert("Sem dados para o NIF.");
+        }
+      } catch (error) {
+        console.error("Error fetching discharge note:", error);
+        alert("Erro ao obter os dados.");
+      }
+    },
+    async saveForm() {
+      try {
+        const response = await axios.post(`http://localhost:8000/discharge-note/save`, {
+          entry_note: this.dischargeData.entry_note,
+          discharge_text: { text: this.dischargeData.discharge_text }
+        });
+        alert("A nota de alta foi guardada com sucesso");
+        if (response.data) {
+          this.dischargeData = response.data.message;
+          this.formVisible = true;
         } else {
           this.formVisible = false;
           alert("Sem dados para o NIF.");
@@ -158,6 +178,7 @@ body {
   border: none;
   border-radius: 4px;
   cursor: pointer;
+  background-color: #28a745;
 }
 
 .submit-button:hover {
@@ -199,5 +220,19 @@ h2, h3 {
 h3 {
   margin-top: 1.5rem;
   margin-bottom: 0.5rem;
+}
+
+.save-button {
+  width: 100%;
+  padding: 5px;
+  background-color: #28a745;
+  border: 0px;
+  color: white;
+  border-radius: 3px;
+}
+
+.save-button:hover {
+  transition: 0.2s;
+  scale: 102%;
 }
 </style>

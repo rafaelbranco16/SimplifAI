@@ -9,6 +9,8 @@ from src.controllers.discharge_note_controller import DischargeNoteController
 from src import config
 from src.dto.request_dto import RequestDto
 from src.dto.entry_note_dto import EntryNoteDto
+from src.dto.discharge_note_dto import DischargeNoteDto
+
 from src.logger import Logger
 
 router = APIRouter()
@@ -60,6 +62,11 @@ class Router:
         
         discharge_note_controller: DischargeNoteController = loader.resolve(config.discharge_note_controller["name"])
         return await discharge_note_controller.create_discharge_note(nif)
+    
+    @router.post("/discharge-note/save")
+    async def save_discharge_note(data:DischargeNoteDto):
+        discharge_note_controller: DischargeNoteController = loader.resolve(config.discharge_note_controller["name"])
+        return await discharge_note_controller.save_discharge_note_text(data)
 
     @router.post("/generate-entry-note")
     async def generate_entry_note_from_text(data: dict = Body(...)):

@@ -19,3 +19,6 @@ class DischargeNoteAdapter:
     
     async def find_by_id(self, id) -> dict:
         return self.db["DischargeNote"].find_one({"id": id})
+    
+    async def find_by_nif(self, nif) -> dict:
+        return self.db["DischargeNote"].find_one({"entry_note.identification.nif": nif})

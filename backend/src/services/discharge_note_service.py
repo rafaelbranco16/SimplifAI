@@ -8,6 +8,7 @@ from src.adapters.discharge_note_adapter import DischargeNoteAdapter
 from src.domain.clinical_diary import ClinicalDiary
 from src.domain.discharge_text import DischargeText
 from src.domain.discharge_note import DischargeNote
+from src.dto.discharge_note_dto import DischargeNoteDto
 from src.domain.entry_note import EntryNote
 from langchain_core.prompts import ChatPromptTemplate
 
@@ -50,5 +51,9 @@ class DischargeNoteService :
     Saves the discharge note using the DischargeNoteAdapter.
     @param discharge_note - The discharge note to be saved.
     '''
-    async def save_discharge_note(self, discharge_note: DischargeNote):
-        return await self.discharge_note_adapter.save_discharge_note(discharge_note)
+    async def save_discharge_note(self, discharge_note_dto: DischargeNoteDto):
+        Logger.print_info(discharge_note_dto)
+        entry_note:EntryNote = await self.entry_note_service.create_entry_note(discharge_note_dto["entry_note"])
+        discharge_note:DischargeNote = await self.create_discharge_note(entry_note, DischargeText(discharge_note_dto["discharge_text"]["text"]))
+        await self.discharge_note_adapter.save_discharge_note(discharge_note)
+        return discharge_note
