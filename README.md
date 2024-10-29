@@ -30,8 +30,6 @@ This project is a proof of concept (PoC) that demonstrates the feasibility of us
 
 This proof of concept demonstrates the potential of AI to alleviate the bureaucratic burden on doctors, thereby enhancing their efficiency and improving the doctor-patient relationship. By automating routine documentation tasks, we can significantly impact the healthcare sector, allowing doctors to focus more on patient care.
 
-## 🙏 Acknowledgments and References 
-
 ## ❓ How to install 
 
 ### Requirements:
@@ -56,15 +54,18 @@ In order to use all the application features is recommended to also run our back
 Before start the application it's mandatory to have an .env file configured in order to the application use the desired API keys. The structure of that file must be:
 
 DB_CONNECTION_STRING={MONGO_DB_KEY}
+
 GPT_API_KEY={GPT_KEY}
+
 GROQ_API_KEY={GROK_KEY}
+
 LANGFUSE_SECRET_KEY={LANGFUSE_SECRET_KEY}
+
 LANGFUSE_PUBLIC_KEY_KEY={LANGFUSE_PUBLIC_KEY}
+
 
 We don't give our keys for security reasons, so you must use yours to actually use the application. The .env file must be in the backend folder.
 
 Now you are able to actually start the application with
 
     python -m uvicorn start:app --reload --port 7000
-
-## 💻 [Wiki]()

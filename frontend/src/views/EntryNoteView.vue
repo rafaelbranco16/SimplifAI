@@ -38,7 +38,7 @@
     <section class="dynamic-fields">
       <h2>Alergias</h2>
       <div v-for="(allergy, index) in formData.allergies" :key="index" class="form-group">
-        <input type="text" v-model="formData.allergies[index]" placeholder="Enter allergy" />
+        <input type="text" v-model="formData.allergies[index]" placeholder="Inserir alergia..." />
         <button @click="removeAllergy(index)">Remover</button>
       </div>
       <button @click="addAllergy">Adicionar</button>

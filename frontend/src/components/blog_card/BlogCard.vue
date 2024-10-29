@@ -2,12 +2,12 @@
     <div class="blog-card-container">
       <router-link to="/entry-note" class="blog-card">
         <h2>Nota de Entrada</h2>
-        <p>Registro inicial do paciente ao ser internado, incluindo histórico médico e diagnóstico provisório.</p>
+        <p>Registo inicial do paciente ao ser internado, incluindo histórico médico e diagnóstico provisório.</p>
       </router-link>
   
       <router-link to="/upload-audio" class="blog-card">
         <h2>Diário Clínico</h2>
-        <p>Registros diários da evolução do paciente, com anamnese, observações e exames.</p>
+        <p>Registos diários da evolução do paciente, com anamnese, observações e exames.</p>
       </router-link>
   
       <router-link to="/discharge-note" class="blog-card">
@@ -17,7 +17,7 @@
       
       <router-link to="/clinical-history" class="blog-card">
         <h2>Consulta</h2>
-        <p>Ato médico para coleta e registro de informações clínicas, com avaliação e plano de tratamento.</p>
+        <p>Ato médico para coleta e registo de informações clínicas, com avaliação e plano de tratamento.</p>
       </router-link>
     </div>
   </template>

@@ -69,10 +69,6 @@
 
       <label for="surgical_background">Histórico Cirúrgico:</label>
       <input v-model="jsonData.entry_note.personal_background.surgical_background" id="surgical_background" type="text" />
-
-      <button class="send-btn" @click="sendUpdatedData">
-        Enviar Dados Atualizados
-      </button>
     </div>
   </div>
   <div class="right-container">
