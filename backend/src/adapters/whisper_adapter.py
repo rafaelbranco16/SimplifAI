@@ -1,7 +1,6 @@
 from src.adapters.audio_adapter import AudioAdapter
 from groq import Groq
 import os
-import whisper
 from transformers import WhisperProcessor, WhisperForConditionalGeneration
 
 class WhisperAdapter(AudioAdapter):
