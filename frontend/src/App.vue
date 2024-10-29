@@ -14,7 +14,7 @@
         <li><router-link to="/entry-note" @click="closeMenu">Nota de Entrada</router-link></li>
         <li><router-link to="/upload-audio" @click="closeMenu">Diário Clínico</router-link></li>
         <li><router-link to="/discharge-note" @click="closeMenu">Nota de Alta</router-link></li>
-        <li><router-link to="/clinical-history" @click="closeMenu">Histórias Clínicas</router-link></li>
+        <li><router-link to="/clinical-history" @click="closeMenu">Consultas</router-link></li>
       </ul>
     </nav>
     <router-view />

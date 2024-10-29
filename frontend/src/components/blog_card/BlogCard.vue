@@ -2,22 +2,22 @@
     <div class="blog-card-container">
       <router-link to="/entry-note" class="blog-card">
         <h2>Nota de Entrada</h2>
-        <p>A nota de entrada é utilizada para descrever o paciente com os seus dados e doenças.</p>
+        <p>Registro inicial do paciente ao ser internado, incluindo histórico médico e diagnóstico provisório.</p>
       </router-link>
   
       <router-link to="/upload-audio" class="blog-card">
         <h2>Diário Clínico</h2>
-        <p>O diário clínico é constituído utilizado para criar um diário feito durante cada consulta do internamento.</p>
+        <p>Registros diários da evolução do paciente, com anamnese, observações e exames.</p>
       </router-link>
   
       <router-link to="/discharge-note" class="blog-card">
         <h2>Nota de Alta</h2>
-        <p>Uma nota pós-internamento que determina o estado do paciente.</p>
+        <p>Resumo final do internamento com histórico, tratamentos realizados e orientações pós-alta.</p>
       </router-link>
       
       <router-link to="/clinical-history" class="blog-card">
-        <h2>História Clínica</h2>
-        <p>Uma simulação de uma consulta com o paciente que gera algo semelhante a um diário clínico.</p>
+        <h2>Consulta</h2>
+        <p>Ato médico para coleta e registro de informações clínicas, com avaliação e plano de tratamento.</p>
       </router-link>
     </div>
   </template>

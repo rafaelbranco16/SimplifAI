@@ -1,6 +1,6 @@
 <template>
   <div class="clinical-history-container">
-    <h1>História Clínica</h1>
+    <h1>Consultas</h1>
     <div class="controls">
       <button class="record-btn" @click="isRecording2 ? stopRecording2() : startRecording2()">
         {{ isRecording2 ? 'Parar gravação' : 'Começar gravação' }}
