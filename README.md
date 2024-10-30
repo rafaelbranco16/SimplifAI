@@ -7,6 +7,10 @@ This project is a proof of concept (PoC) that aims to address the issues explain
 
 ## 🏥 Motivation and Background
 
+Evidence-based medicine relies heavily on the collection and processing of extensive data. However, patients often perceive excessive bureaucracy as diverting clinicians' attention away from personalized care. The significant time dedicated to these administrative tasks can be attributed to inefficient information systems, with the actual costs of data collection and processing exceeding initial estimates. Notably, 70% of clinicians have reported that, in the past five years, the time required for data entry and documentation has increased considerably.
+ 
+This project aims to address these inefficiencies by reducing redundant documentation and focusing on essential information only. Additionally, it seeks to standardize data entry formats, making documentation more uniform and accessible.
+
 ## 🎯 Project Scope and Goals
 Our project targets two primary bureaucratic processes:
 1. The creation of discharge notes from hospitalizations.
@@ -68,4 +72,4 @@ We don't give our keys for security reasons, so you must use yours to actually u
 
 Now you are able to actually start the application with
 
-    python -m uvicorn start:app --reload --port 7000
+    python -m uvicorn start:app --reload --port 8000
