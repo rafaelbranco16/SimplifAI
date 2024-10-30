@@ -14,11 +14,13 @@
       <input v-model="nif" type="text" id="nif" class="input-field" placeholder="Enter NIF" />
 
       <button class="send-btn" @click="sendTextToBackend2" :disabled="!transcription2">
-        Criar diário clínico
+        Criar diário de consulta
       </button>
     </div>
 
     <textarea v-model="transcription2" class="transcription" placeholder="Escreva aqui ou grave para preencher..."></textarea>
+    <textarea v-model="final_text" class="transcription" placeholder="Diário da consulta..."></textarea>
+
   </div>
 </template>
 
@@ -33,7 +35,8 @@ export default {
       audioChunks2: [],
       audioURL2: null,
       transcription2: null,
-      nif: ""
+      nif: "",
+      final_text:""
     };
   },
   methods: {
@@ -78,7 +81,7 @@ export default {
           "id": this.nif,
           "mct": this.transcription2
         });
-        window.alert('Texto enviado com sucesso!', response.data);
+        this.final_text = response.data.message.medical_consultation_text.text;
       } catch (error) {
         window.alert('Erro ao enviar o texto:', error);
       }
